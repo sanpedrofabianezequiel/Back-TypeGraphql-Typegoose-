@@ -7,8 +7,8 @@ import { Ref } from "types/Ref";
 
 @ObjectType({description:'Stream description'})
 export class Stream {
-    @Field()
-    readonly _id : ObjectId;
+    @Field(()=>String)
+    readonly _id : ObjectId | string;
 
     @Field()
     @Property({required:true})
