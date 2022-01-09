@@ -9,6 +9,8 @@
       try {
         const token =  authorization?.replace('Bearer ', '');
         const user  =  jwt.verify(token!, APP_SECRET) as any;
+        console.log(token);
+        console.log(user);
         context.res.locals.userId = user.id;
         return next();   
       } catch (error) {

@@ -16,8 +16,10 @@ export class StreamResolver {
     }
 
     @Query(()=> [Stream])
+    @UseMiddleware(isAuth)
     async getStreams(@Ctx() ctx : MyContext){
         //2 Display all streams for the current user
+        console.log(ctx.res.locals.userId);
         return StreamModel.find({author: ctx.res.locals.userId});
     }
     
