@@ -28,7 +28,7 @@ import jwt from 'jsonwebtoken';
                id: user.id,
            }
 
-           const token = jwt.sign(payload,process.env.SESSION_SECRET  || '123456');
+           const token = jwt.sign(payload,process.env.SESSION_SECRET  || '123456',{expiresIn: '4h'});
            
            return {user,token};
        }
@@ -39,8 +39,8 @@ import jwt from 'jsonwebtoken';
            //1- Chec for an existing email
            const existingUser =  await UserModel.findOne({email});
 
-           if(existingUser){
-               throw new Error('Email already in use');
+           if(!existingUser){
+               throw new Error('Email not found');
            }
 
            //2- check if password is valid 

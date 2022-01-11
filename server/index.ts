@@ -6,7 +6,7 @@ import cors from 'cors';
 import { createSchema } from '../schema';
 import createSession from '../session';
 
-const port =  process.env.PORT || 3000;
+const port =  process.env.PORT || 3001;
 
 async function createServer(){
     
